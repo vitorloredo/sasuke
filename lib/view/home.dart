@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sasuke/model/view.dart';
-import 'package:sasuke/widget/home.dart';
 
 class HomeView extends StatefulWidget {
   final ViewData viewData;
@@ -19,7 +18,7 @@ class OoffersStateView extends State<HomeView> {
       itemCount: widget.viewData.listHomeInter.length,
       itemBuilder: (BuildContext bc, int index) {
         final homeInterface = widget.viewData.listHomeInter[index];
-        return HomeCard(homeInterface: homeInterface);
+        return homeInterface.toCard;
       },
     );
   }

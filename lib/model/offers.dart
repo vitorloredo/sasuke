@@ -14,7 +14,9 @@ class OffersData implements HomeInterface {
   String get displayAndress => address.getDisplay;
 
   @override
-  Widget get toWidget => HomeCard(homeInterface: this);
+  Widget get toCard => HomeCard(
+    homeInterface: this
+  );
 
   @override
   Color get color => Colors.blue;
