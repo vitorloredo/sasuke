@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sasuke/model/home.dart';
-import 'package:sasuke/model/offers.dart';
 import 'package:sasuke/model/view.dart';
 import 'package:sasuke/service/home.dart';
 import 'package:sasuke/service/leads.dart';
@@ -15,6 +14,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   TabController _tabController;
+  Future<ViewData> leads;
+  Future<ViewData> offers;
 
   @override
   void initState() {
@@ -61,22 +62,34 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   }
 
   TabBarView _tabView(HomeData homeData) {
+    offers = OffersService().getList(homeData.offers);
+    leads = LeadsService().getList(homeData.leads);
     return TabBarView(
       children: [
         FutureBuilder(
-          future: OffersService().getList(homeData.offers),
+          future: offers,
           builder: (BuildContext bc, AsyncSnapshot<ViewData> viewData) {
             if(viewData.connectionState == ConnectionState.waiting) return Load();
             if(!viewData.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
-            return HomeView(viewData: viewData.data);
+            return RefreshIndicator(
+              child: HomeView(viewData: viewData.data),
+              onRefresh: () {
+                return offers = OffersService().getList(viewData.data.link);
+              },
+            );
           },
         ),
         FutureBuilder(
-          future: LeadsService().getList(homeData.leads),
+          future: leads,
           builder: (BuildContext bc, AsyncSnapshot<ViewData> viewData) {
             if(viewData.connectionState == ConnectionState.waiting) return Load();
             if(!viewData.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
-            return HomeView(viewData: viewData.data);
+            return RefreshIndicator(
+              child: HomeView(viewData: viewData.data),
+              onRefresh: () {
+                return leads = LeadsService().getList(viewData.data.link);
+              },
+            );
           },
         ),
       ],
