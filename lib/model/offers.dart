@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sasuke/interface/home.dart';
 import 'package:sasuke/model/address.dart';
+import 'package:sasuke/model/date.dart';
 import 'package:sasuke/model/link.dart';
 import 'package:sasuke/widget/home.dart';
 
 class OffersData implements HomeInterface {
-  DateTime date;
+  Date date;
   AddressData address;
   Link link;
   String state;
@@ -28,6 +29,9 @@ class OffersData implements HomeInterface {
   String title;
 
   @override
+  String get displayDate => '${date.dateTime.day} de ${date.getMonth()}';
+
+  @override
   String user;
 
   OffersData.fromJson(Map map) {
@@ -36,6 +40,7 @@ class OffersData implements HomeInterface {
     title = embedded['title'];
     final valor = embedded['_embedded'];
     user = valor['user']['name'];
+    date = Date(DateTime.parse(embedded['created_at']));
     address = AddressData.fromJson(valor['address']);
   }
 }

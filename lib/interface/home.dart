@@ -7,4 +7,5 @@ abstract class HomeInterface {
   bool get read;
   String title;
   String user;
+  String get displayDate;
 }
