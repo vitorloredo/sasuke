@@ -128,6 +128,7 @@ class _DetailPageState extends State<DetailPage> {
               "Contato do Cliente",
               style: TextStyle(
                 color: Colors.white,
+                fontWeight: FontWeight.bold,
                 fontSize: 18.0
               ),
             ),
@@ -137,15 +138,16 @@ class _DetailPageState extends State<DetailPage> {
             children: <Widget>[
               Icon(Icons.lock_outline, color: Colors.white70,),
               SizedBox(width: 6.0,),
-              Text(detail.user.getOnePhone, style: TextStyle(color: Colors.white70),)
+              Text(detail.user.getOnePhone, style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold,),)
             ],
           ),
+          SizedBox(height: 16.0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Icon(Icons.lock_outline, color: Colors.white70,),
               SizedBox(width: 6.0,),
-              Text(detail.user.email.toString(), style: TextStyle(color: Colors.white70),)
+              Text(detail.user.email.toString(), style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold,),)
             ],
           )
         ],
@@ -209,7 +211,7 @@ class _DetailPageState extends State<DetailPage> {
       children: <Widget>[
         Icon(iconData, color: widget.color,),
         SizedBox(width: 6.0,),
-        Text(text)
+        Text(text, style: TextStyle(fontWeight: FontWeight.bold,),)
       ],
     );
   }
