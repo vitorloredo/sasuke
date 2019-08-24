@@ -56,6 +56,62 @@ class LeadsData implements HomeInterface{
   String get nameType => "Disponivel";
 
   @override
-  // TODO: implement navigatorbar
-  Widget get navigatorbar => null;
+  Widget get navigatorbar => Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 14.0),
+          color: Colors.white,
+          child: _iconTab(
+            iconData: Icons.phone,
+            text: "LIGAR",
+            color: Colors.blue
+          ),
+        ),
+      ),
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
+            height: 10.0,
+            width: 2.0,
+            color: Colors.white,
+          ),
+          SizedBox(height: 32.0,),
+          Container(
+            height: 10.0,
+            width: 2.0,
+            color: Colors.white,
+          ),
+        ],
+      ),
+      Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 14.0),
+          color: Colors.white,
+          child: _iconTab(
+            iconData: Icons.message,
+            text: "WHATSAPP",
+            color: Colors.blue
+          ),
+        ),
+      )
+    ],
+  );
+
+  Row _iconTab({IconData iconData, String text, Color color}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(iconData, color: color,),
+        SizedBox(width: 6.0,),
+        Text(text,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: color
+        ),)
+      ],
+    );
+  }
 }
