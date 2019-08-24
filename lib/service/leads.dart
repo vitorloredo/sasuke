@@ -5,7 +5,7 @@ import 'dart:convert' as convert;
 import 'package:sasuke/model/view.dart';
 
 class LeadsService {
-  Future<ViewData> getListLeads(Link link) async {
+  Future<ViewData> getList(Link link) async {
     return await link.response
       .then((response) async {
         final decode = convert.utf8.decode(response.bodyBytes);

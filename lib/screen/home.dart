@@ -3,6 +3,7 @@ import 'package:sasuke/model/home.dart';
 import 'package:sasuke/model/offers.dart';
 import 'package:sasuke/model/view.dart';
 import 'package:sasuke/service/home.dart';
+import 'package:sasuke/service/leads.dart';
 import 'package:sasuke/service/offers.dart';
 import 'package:sasuke/view/load.dart';
 import 'package:sasuke/view/home.dart';
@@ -63,14 +64,21 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return TabBarView(
       children: [
         FutureBuilder(
-          future: OffersService().getListOffers(homeData.offers),
+          future: OffersService().getList(homeData.offers),
           builder: (BuildContext bc, AsyncSnapshot<ViewData> viewData) {
             if(viewData.connectionState == ConnectionState.waiting) return Load();
             if(!viewData.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
             return HomeView(viewData: viewData.data);
           },
         ),
-        Icon(Icons.shopping_cart),
+        FutureBuilder(
+          future: LeadsService().getList(homeData.leads),
+          builder: (BuildContext bc, AsyncSnapshot<ViewData> viewData) {
+            if(viewData.connectionState == ConnectionState.waiting) return Load();
+            if(!viewData.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
+            return HomeView(viewData: viewData.data);
+          },
+        ),
       ],
       controller: _tabController,
     );

@@ -40,8 +40,8 @@ class LeadsData implements HomeInterface{
     date = Date(DateTime.parse(map['created_at']));
     final embedded = map['_embedded'];
     address = AddressData.fromJson(embedded['address']);
-    user = embedded['user'];
-    title = embedded['request'];
+    user = embedded['user']['name'];
+    title = embedded['request']['title'];
     link = Link(map['_links']['self']['href']);
   }
 
