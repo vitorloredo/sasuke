@@ -42,7 +42,7 @@ class LeadsData implements HomeInterface{
     address = AddressData.fromJson(embedded['address']);
     user = embedded['user']['name'];
     title = embedded['request']['title'];
-    link = Link(map['_links']['self']['href']);
+    link = Link.fromJson(map['_links']);
   }
 
 }

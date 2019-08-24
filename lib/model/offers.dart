@@ -42,6 +42,6 @@ class OffersData implements HomeInterface {
     user = valor['user']['name'];
     date = Date(DateTime.parse(embedded['created_at']));
     address = AddressData.fromJson(valor['address']);
-    link = Link(map['_links']['self']['href']);
+    link = Link.fromJson(map['_links']);
   }
 }
