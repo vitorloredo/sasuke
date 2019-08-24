@@ -8,7 +8,8 @@ class OffersService {
   Future<ViewData> getListOffers(Link link) async {
     return await link.response
       .then((response) async {
-        final jsonResponse = convert.jsonDecode(response.body);
+        final decode = convert.utf8.decode(response.bodyBytes);
+        final jsonResponse = convert.jsonDecode(decode);
         List<OffersData> list = [];
 
         jsonResponse['offers'] as List
