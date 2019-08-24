@@ -29,7 +29,7 @@ class OffersData implements HomeInterface {
   String title;
 
   @override
-  String get displayDate => '${date.dateTime.day} de ${date.getMonth().replaceRange(3, date.getMonth().length, "")}';
+  String get displayDate => date.displayDate;
 
   @override
   String user;
