@@ -3,7 +3,7 @@ class Date {
 
   Date(this.dateTime);
 
-  String get displayDate => '${dateTime.day} de ${getMonth().replaceRange(3, getMonth().length, "")}';
+  String get getDisplay => '${dateTime.day} de ${getMonth().replaceRange(3, getMonth().length, "")}';
 
   String getMonth() {
     String month;

@@ -29,7 +29,7 @@ class OffersData implements HomeInterface {
   String title;
 
   @override
-  String get displayDate => date.displayDate;
+  String get displayDate => date.getDisplay;
 
   @override
   String user;
@@ -42,5 +42,6 @@ class OffersData implements HomeInterface {
     user = valor['user']['name'];
     date = Date(DateTime.parse(embedded['created_at']));
     address = AddressData.fromJson(valor['address']);
+    link = Link(map['_links']['self']['href']);
   }
 }
