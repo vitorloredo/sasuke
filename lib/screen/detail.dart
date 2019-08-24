@@ -5,7 +5,7 @@ import 'package:sasuke/service/detail.dart';
 import 'package:sasuke/view/load.dart';
 
 class DetailPage extends StatefulWidget {
-  final Color color;
+  final MaterialColor color;
   final Link link;
   final String title;
 
@@ -69,20 +69,36 @@ class _DetailPageState extends State<DetailPage> {
                           text: detail.address.getDisplay,
                           iconData: Icons.pin_drop
                         ),
-                        Text(
-                          detail.distanceDisplay,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14.0
+                        Padding(
+                          padding: const EdgeInsets.only(left: 28.0),
+                          child: Text(
+                            detail.distanceDisplay,
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 14.0
+                            ),
                           ),
                         ),
                         SizedBox(height: 8.0,),
                         Divider(),
                         SizedBox(height: 8.0,),
-                        ...listInfo(detail),
-
+                        ..._listInfo(detail),
                         SizedBox(height: 6.0,),
                       ],
+                    ),
+                  ),
+                  _infoUser(detail),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 20.0),
+                    child: Center(
+                      child: Text(
+                        "Aceite o pedido para destravar o contato!",
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0
+                        ),
+                      ),
                     ),
                   )
                 ],
@@ -94,7 +110,47 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-  List<Widget> listInfo(DetailData detail) {
+  Widget _infoUser(DetailData detail) {
+    return Container(
+      padding: EdgeInsets.only(left: 12.0),
+      height: 140,
+      width: double.infinity,
+      color: widget.color[300],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16.0, top: 16.0),
+            child: Text(
+              "Contato do Cliente",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Icon(Icons.lock_outline, color: Colors.white70,),
+              SizedBox(width: 6.0,),
+              Text(detail.user.getOnePhone, style: TextStyle(color: Colors.white70),)
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Icon(Icons.lock_outline, color: Colors.white70,),
+              SizedBox(width: 6.0,),
+              Text(detail.user.email.toString(), style: TextStyle(color: Colors.white70),)
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _listInfo(DetailData detail) {
     List<Widget> list = [];
 
     detail.listInfo.forEach((it) {
@@ -108,7 +164,7 @@ class _DetailPageState extends State<DetailPage> {
               text: it.label
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 3.0, bottom: 16.0, top: 4.0),
+              padding: const EdgeInsets.only(left: 30.0, bottom: 16.0, top: 4.0),
               child: Text(
                 it.value.toString(),
                 style: TextStyle(
