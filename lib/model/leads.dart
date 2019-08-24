@@ -51,4 +51,7 @@ class LeadsData implements HomeInterface{
 
   @override
   Color get colorType => Colors.green;
+
+  @override
+  String get nameType => "Ofertas";
 }

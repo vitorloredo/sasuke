@@ -49,4 +49,7 @@ class OffersData implements HomeInterface {
 
   @override
   Color get colorType => Colors.blue;
+
+  @override
+  String get nameType => "Disponivel";
 }

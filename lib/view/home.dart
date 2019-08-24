@@ -21,6 +21,7 @@ class HomeView extends StatelessWidget {
             MaterialPageRoute(builder: (context) => DetailPage(
               color: homeInterface.colorType,
               link: homeInterface.link,
+              title: homeInterface.nameType,
             )),
           ),
         );

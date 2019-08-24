@@ -12,4 +12,5 @@ abstract class HomeInterface {
   String get displayDate;
   Color get colorType;
   Link link;
+  String get nameType;
 }
