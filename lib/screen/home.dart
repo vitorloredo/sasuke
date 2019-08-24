@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       body: FutureBuilder<HomeData>(
         future: HomeService().get(),
         builder: (BuildContext bc, homeSnap) {
-          if(homeSnap.connectionState == ConnectionState.waiting) return Load();
+          if(homeSnap.connectionState == ConnectionState.waiting && !homeSnap.hasData) return Load();
           if(!homeSnap.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
           return _tabView(homeSnap.data);
         },
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         FutureBuilder(
           future: offers,
           builder: (BuildContext bc, AsyncSnapshot<ViewData> viewData) {
-            if(viewData.connectionState == ConnectionState.waiting) return Load();
+            if(viewData.connectionState == ConnectionState.waiting && !viewData.hasData) return Load();
             if(!viewData.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
             return RefreshIndicator(
               child: HomeView(viewData: viewData.data),
