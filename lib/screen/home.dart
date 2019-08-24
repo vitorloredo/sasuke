@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sasuke/model/home.dart';
 import 'package:sasuke/service/home.dart';
+import 'package:sasuke/view/load.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,13 +43,25 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           ],
         )
       ),
-      body: TabBarView(
-          children: [
-            Text("This is chat Tab View"),
-            Text("This is notification Tab View"),
-          ],
-      controller: _tabController,
+      backgroundColor: Theme.of(context).primaryColor,
+      body: FutureBuilder<HomeData>(
+        future: HomeService().get(),
+        builder: (BuildContext bc, homeSnap) {
+          if(homeSnap.connectionState == ConnectionState.waiting) return Load();
+          if(!homeSnap.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
+          return _tabView();
+        },
       ),
+    );
+  }
+
+  TabBarView _tabView() {
+    return TabBarView(
+      children: [
+        Icon(Icons.shopping_cart),
+        Icon(Icons.shopping_cart),
+      ],
+      controller: _tabController,
     );
   }
 
