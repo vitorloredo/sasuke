@@ -7,7 +7,7 @@ class UserData {
     user = map['name'];
     email = map['email'];
     if(map['_embedded'] != null) {
-      List phones = map['_embedded']['phones'];
+      phones = map['_embedded']['phones'];
     }
   }
 }
