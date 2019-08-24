@@ -19,7 +19,7 @@ class OffersData implements HomeInterface {
   );
 
   @override
-  Color get color => Colors.blue;
+  Color get color => read ? Colors.grey : Colors.blue;
 
   @override
   bool get read => state == 'read';
@@ -34,5 +34,8 @@ class OffersData implements HomeInterface {
     state = map['state'];
     final embedded = map['_embedded']['request'];
     title = embedded['title'];
+    final valor = embedded['_embedded'];
+    user = valor['user']['name'];
+    address = AddressData.fromJson(valor['address']);
   }
 }

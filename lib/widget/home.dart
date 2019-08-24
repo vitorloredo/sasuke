@@ -10,8 +10,7 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10.0),
-      height: 20.0,
-      width: 20.0,
+      padding: EdgeInsets.symmetric(horizontal: 12.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
@@ -23,11 +22,51 @@ class HomeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(0),
-            child: Text(homeInterface.title),
-          )
+            padding: EdgeInsets.only(top: 12.0, bottom: 4.0),
+            child: Text(
+              homeInterface.title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0
+              ),
+            ),
+          ),
+          Divider(),
+          Row(
+            children: <Widget>[
+              IconText(
+                Icons.person, homeInterface.user
+              ),
+              Spacer(),
+              IconText(
+                Icons.person, "Data"
+              ),
+            ],
+          ),
+          SizedBox(height: 12.0,),
+          IconText(
+            Icons.pin_drop, homeInterface.displayAndress
+          ),
+          SizedBox(height: 12.0,)
         ],
       ),
+    );
+  }
+
+  IconText(IconData iconData, String text) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Icon(iconData, color: homeInterface.color,),
+        SizedBox(width: 6.0,),
+        Text(
+          text,
+          style: TextStyle(
+            color: Colors.grey[600],
+            fontWeight: FontWeight.bold,
+          ),
+        )
+      ],
     );
   }
 }
