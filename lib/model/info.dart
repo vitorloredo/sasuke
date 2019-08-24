@@ -3,7 +3,7 @@ class InfoData {
   dynamic value;
 
   InfoData.fromJson(Map map) {
-    value = map['value'];
+    value = map['value'].toString().replaceAll('[', '').replaceAll(']', '');
     label = map['label'];
   }
 }

@@ -34,17 +34,17 @@ class _DetailPageState extends State<DetailPage> {
           if(detailSnap.connectionState == ConnectionState.waiting) return Load();
           if(!detailSnap.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
           final detail = detailSnap.data;
-          return Container(
-            width: double.infinity,
-            margin: EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10.0),
-                bottomRight: Radius.circular(10.0)
+          return SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0)
+                ),
               ),
-            ),
-            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -71,8 +71,15 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         Text(
                           detail.distanceDisplay,
-                          style: TextStyle(color: Colors.grey),
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14.0
+                          ),
                         ),
+                        SizedBox(height: 8.0,),
+                        Divider(),
+                        SizedBox(height: 8.0,),
+                        ...listInfo(detail),
 
                         SizedBox(height: 6.0,),
                       ],
@@ -85,6 +92,36 @@ class _DetailPageState extends State<DetailPage> {
         },
       ),
     );
+  }
+
+  List<Widget> listInfo(DetailData detail) {
+    List<Widget> list = [];
+
+    detail.listInfo.forEach((it) {
+      list.add(
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _iconTab(
+              iconData: Icons.info,
+              text: it.label
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 3.0, bottom: 16.0, top: 4.0),
+              child: Text(
+                it.value.toString(),
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14.0
+                ),
+              ),
+            ),
+          ],
+        )
+      );
+    });
+    return list;
   }
 
   Padding _title(DetailData detail) {
