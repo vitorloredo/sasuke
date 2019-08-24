@@ -1,12 +1,13 @@
 class UserData {
   String user;
   String email;
-  String phones;
+  List phones;
 
   UserData.fromMap(Map map) {
     user = map['name'];
     email = map['email'];
-    if(map['_embedded'] != null)
-      phones = map['_embedded']['phones']['number']  ?? null;
+    if(map['_embedded'] != null) {
+      List phones = map['_embedded']['phones'];
+    }
   }
 }

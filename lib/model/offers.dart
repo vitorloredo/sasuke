@@ -9,6 +9,7 @@ import 'package:sasuke/widget/home.dart';
 class OffersData implements HomeInterface {
   Date date;
   AddressData address;
+  @override
   Link link;
   String state;
 

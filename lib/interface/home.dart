@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sasuke/model/link.dart';
 import 'package:sasuke/model/user.dart';
 
 abstract class HomeInterface {
@@ -10,4 +11,5 @@ abstract class HomeInterface {
   UserData user;
   String get displayDate;
   Color get colorType;
+  Link link;
 }

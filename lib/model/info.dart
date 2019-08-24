@@ -1,6 +1,6 @@
 class InfoData {
   String label;
-  List value;
+  dynamic value;
 
   InfoData.fromJson(Map map) {
     value = map['value'];

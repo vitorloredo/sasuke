@@ -17,7 +17,10 @@ class LeadsData implements HomeInterface{
 
   Date date;
   AddressData address;
+
+  @override
   Link link;
+
   String state;
 
   @override

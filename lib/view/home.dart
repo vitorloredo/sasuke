@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sasuke/model/view.dart';
+import 'package:sasuke/screen/detail.dart';
 
 class HomeView extends StatelessWidget {
   final ViewData viewData;
@@ -13,7 +14,16 @@ class HomeView extends StatelessWidget {
       itemCount: viewData.listHomeInter.length,
       itemBuilder: (BuildContext bc, int index) {
         final homeInterface = viewData.listHomeInter[index];
-        return homeInterface.toCard;
+        return GestureDetector(
+          child: homeInterface.toCard,
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailPage(
+              color: homeInterface.colorType,
+              link: homeInterface.link,
+            )),
+          ),
+        );
       },
     );
   }
