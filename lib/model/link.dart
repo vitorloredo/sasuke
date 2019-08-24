@@ -1,5 +1,9 @@
-class Link {
-  final String href;
+import 'package:http/http.dart' as http;
 
-  Link(this.href);
+class Link {
+  final String _href;
+
+  Link(this._href);
+
+  get response => http.get(_href);
 }
