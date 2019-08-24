@@ -54,4 +54,8 @@ class LeadsData implements HomeInterface{
 
   @override
   String get nameType => "Disponivel";
+
+  @override
+  // TODO: implement navigatorbar
+  Widget get navigatorbar => null;
 }

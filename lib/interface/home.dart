@@ -13,4 +13,5 @@ abstract class HomeInterface {
   Color get colorType;
   Link link;
   String get nameType;
+  Widget get navigatorbar;
 }

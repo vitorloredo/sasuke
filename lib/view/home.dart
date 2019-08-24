@@ -22,6 +22,7 @@ class HomeView extends StatelessWidget {
               color: homeInterface.colorType,
               link: homeInterface.link,
               title: homeInterface.nameType,
+              bottomNavigationBar: homeInterface.navigatorbar,
             )),
           ),
         );

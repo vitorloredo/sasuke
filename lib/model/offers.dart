@@ -52,4 +52,48 @@ class OffersData implements HomeInterface {
 
   @override
   String get nameType => "Ofertas";
+
+  @override
+  Widget get navigatorbar => Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 14.0),
+          color: Colors.white,
+          child: _iconTab(
+            iconData: Icons.close,
+            text: "RECUSAR",
+            color: Colors.grey
+          ),
+        ),
+      ),
+      Expanded(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 14.0),
+          color: Colors.greenAccent[700],
+          child: _iconTab(
+            iconData: Icons.check,
+            text: "RECUSAR",
+            color: Colors.black
+          ),
+        ),
+      )
+    ],
+  );
+
+  Row _iconTab({IconData iconData, String text, Color color}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(iconData, color: color,),
+        SizedBox(width: 6.0,),
+        Text(text,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: color
+        ),)
+      ],
+    );
+  }
 }

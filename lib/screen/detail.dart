@@ -8,11 +8,13 @@ class DetailPage extends StatefulWidget {
   final MaterialColor color;
   final Link link;
   final String title;
+  final Widget bottomNavigationBar;
 
   DetailPage({
     @required this.color,
     @required this.link,
-    @required this.title
+    @required this.title,
+    this.bottomNavigationBar
   });
 
   @override
@@ -23,6 +25,7 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: widget.bottomNavigationBar,
       appBar: AppBar(
         centerTitle: false,
         title: Text(widget.title)
@@ -37,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
           return SingleChildScrollView(
             child: Container(
               width: double.infinity,
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.only(top: 12.0, right: 12.0, left: 12.0,  bottom: 18.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
