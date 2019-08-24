@@ -17,7 +17,7 @@ class OffersData implements HomeInterface {
 
   @override
   Widget get toCard => HomeCard(
-    homeInterface: this
+    viewData: this
   );
 
   @override

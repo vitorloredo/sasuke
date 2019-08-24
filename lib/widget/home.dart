@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sasuke/interface/home.dart';
 
 class HomeCard extends StatelessWidget {
-  final HomeInterface homeInterface;
+  final HomeInterface viewData;
 
-  HomeCard({@required this.homeInterface});
+  HomeCard({@required this.viewData});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class HomeCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 12.0, bottom: 4.0),
             child: Text(
-              homeInterface.title,
+              viewData.title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0
@@ -35,17 +35,17 @@ class HomeCard extends StatelessWidget {
           Row(
             children: <Widget>[
               IconText(
-                Icons.person, homeInterface.user.user
+                Icons.person, viewData.user.user
               ),
               Spacer(),
               IconText(
-                Icons.person, homeInterface.displayDate
+                Icons.person, viewData.displayDate
               ),
             ],
           ),
           SizedBox(height: 12.0,),
           IconText(
-            Icons.pin_drop, homeInterface.displayAndress
+            Icons.pin_drop, viewData.displayAndress
           ),
           SizedBox(height: 12.0,)
         ],
@@ -57,7 +57,7 @@ class HomeCard extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Icon(iconData, color: homeInterface.color,),
+        Icon(iconData, color: viewData.color,),
         SizedBox(width: 6.0,),
         Text(
           text,
