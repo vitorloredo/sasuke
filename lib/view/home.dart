@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sasuke/interface/home.dart';
+import 'package:sasuke/model/view.dart';
 
 class HomeView extends StatefulWidget {
-  final List<HomeInterface> listInterface;
+  final ViewData viewData;
 
-  HomeView({@required this.listInterface});
+  HomeView({@required this.viewData});
 
   @override
   OoffersStateView createState() => OoffersStateView();

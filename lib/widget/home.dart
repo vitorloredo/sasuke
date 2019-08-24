@@ -9,7 +9,11 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(
+            Radius.circular(5.0)
+        ),
+      ),
     );
   }
 }

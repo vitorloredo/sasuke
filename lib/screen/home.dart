@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sasuke/model/home.dart';
+import 'package:sasuke/model/offers.dart';
+import 'package:sasuke/model/view.dart';
 import 'package:sasuke/service/home.dart';
+import 'package:sasuke/service/offers.dart';
 import 'package:sasuke/view/load.dart';
+import 'package:sasuke/view/home.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -49,16 +53,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         builder: (BuildContext bc, homeSnap) {
           if(homeSnap.connectionState == ConnectionState.waiting) return Load();
           if(!homeSnap.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
-          return _tabView();
+          return _tabView(homeSnap.data);
         },
       ),
     );
   }
 
-  TabBarView _tabView() {
+  TabBarView _tabView(HomeData homeData) {
     return TabBarView(
       children: [
-        Icon(Icons.shopping_cart),
+        FutureBuilder(
+          future: OffersService().getListOffers(homeData.offers),
+          builder: (BuildContext bc, AsyncSnapshot<ViewData> viewData) {
+            if(viewData.connectionState == ConnectionState.waiting) return Load();
+            if(!viewData.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
+            return HomeView(viewData: viewData.data);
+          },
+        ),
         Icon(Icons.shopping_cart),
       ],
       controller: _tabController,

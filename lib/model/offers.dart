@@ -23,4 +23,10 @@ class OffersData implements HomeInterface {
 
   @override
   bool get read => state == 'read';
+
+  OffersData.fromJson(Map map) {
+    state = map['state'];
+    final embedded = map['_embedded'];
+    title = embedded['title'];
+  }
 }

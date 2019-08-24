@@ -8,7 +8,7 @@ class HomeData {
 
   HomeData.fromJson(Map map) {
     final links = map['_links'];
-    offers = Link(links['leads']["href"]);
-    leads = Link(links['offers']["href"]);
+    leads = Link(links['leads']["href"]);
+    offers = Link(links['offers']["href"]);
   }
 }
