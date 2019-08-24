@@ -3,10 +3,10 @@ import 'package:sasuke/model/link.dart';
 
 class ViewData {
   Link link;
-  List<HomeInterface> homeInterface;
+  List<HomeInterface> listHomeInter;
 
   ViewData.fromJson(Map map, List<HomeInterface> interface) {
     link = Link(map['_links']['self']['href']);
-    homeInterface = interface;
+    listHomeInter = interface;
   }
 }

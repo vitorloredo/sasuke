@@ -5,4 +5,6 @@ abstract class HomeInterface {
   Widget get toWidget;
   Color get color;
   bool get read;
+  String title;
+  String user;
 }

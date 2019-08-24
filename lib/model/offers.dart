@@ -6,8 +6,6 @@ import 'package:sasuke/widget/home.dart';
 
 class OffersData implements HomeInterface {
   DateTime date;
-  String title;
-  String user;
   AddressData address;
   Link link;
   String state;
@@ -24,9 +22,15 @@ class OffersData implements HomeInterface {
   @override
   bool get read => state == 'read';
 
+  @override
+  String title;
+
+  @override
+  String user;
+
   OffersData.fromJson(Map map) {
     state = map['state'];
-    final embedded = map['_embedded'];
+    final embedded = map['_embedded']['request'];
     title = embedded['title'];
   }
 }
