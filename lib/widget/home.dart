@@ -14,7 +14,7 @@ class HomeCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
-            Radius.circular(5.0)
+            Radius.circular(12.0)
         ),
       ),
       child: Column(
@@ -39,7 +39,7 @@ class HomeCard extends StatelessWidget {
               ),
               Spacer(),
               IconText(
-                Icons.person, "Data"
+                Icons.person, homeInterface.displayDate
               ),
             ],
           ),
