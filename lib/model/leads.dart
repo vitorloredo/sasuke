@@ -34,7 +34,7 @@ class LeadsData implements HomeInterface{
 
   @override
   Widget get toCard => HomeCard(
-    homeInterface: this
+    viewData: this
   );
 
   LeadsData.fromJson(Map map) {
