@@ -9,4 +9,5 @@ abstract class HomeInterface {
   String title;
   UserData user;
   String get displayDate;
+  Color get colorType;
 }

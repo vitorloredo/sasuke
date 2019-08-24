@@ -45,4 +45,7 @@ class OffersData implements HomeInterface {
     address = AddressData.fromJson(valor['address']);
     link = Link.fromJson(map['_links']);
   }
+
+  @override
+  Color get colorType => Colors.blue;
 }

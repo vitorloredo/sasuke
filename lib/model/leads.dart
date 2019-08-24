@@ -46,4 +46,6 @@ class LeadsData implements HomeInterface{
     link = Link.fromJson(map['_links']);
   }
 
+  @override
+  Color get colorType => Colors.green;
 }
