@@ -35,7 +35,7 @@ class HomeCard extends StatelessWidget {
           Row(
             children: <Widget>[
               IconText(
-                Icons.person, homeInterface.user
+                Icons.person, homeInterface.user.user
               ),
               Spacer(),
               IconText(

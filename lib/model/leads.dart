@@ -5,6 +5,7 @@ import 'package:sasuke/interface/home.dart';
 import 'package:sasuke/model/address.dart';
 import 'package:sasuke/model/date.dart';
 import 'package:sasuke/model/link.dart';
+import 'package:sasuke/model/user.dart';
 import 'package:sasuke/widget/home.dart';
 
 class LeadsData implements HomeInterface{
@@ -12,7 +13,7 @@ class LeadsData implements HomeInterface{
   String title;
 
   @override
-  String user;
+  UserData user;
 
   Date date;
   AddressData address;
@@ -40,7 +41,7 @@ class LeadsData implements HomeInterface{
     date = Date(DateTime.parse(map['created_at']));
     final embedded = map['_embedded'];
     address = AddressData.fromJson(embedded['address']);
-    user = embedded['user']['name'];
+    user = UserData.fromMap(embedded['user']);
     title = embedded['request']['title'];
     link = Link.fromJson(map['_links']);
   }

@@ -3,6 +3,7 @@ import 'package:sasuke/interface/home.dart';
 import 'package:sasuke/model/address.dart';
 import 'package:sasuke/model/date.dart';
 import 'package:sasuke/model/link.dart';
+import 'package:sasuke/model/user.dart';
 import 'package:sasuke/widget/home.dart';
 
 class OffersData implements HomeInterface {
@@ -32,14 +33,14 @@ class OffersData implements HomeInterface {
   String get displayDate => date.getDisplay;
 
   @override
-  String user;
+  UserData user;
 
   OffersData.fromJson(Map map) {
     state = map['state'];
     final embedded = map['_embedded']['request'];
     title = embedded['title'];
     final valor = embedded['_embedded'];
-    user = valor['user']['name'];
+    user = UserData.fromMap(valor['user']);
     date = Date(DateTime.parse(embedded['created_at']));
     address = AddressData.fromJson(valor['address']);
     link = Link.fromJson(map['_links']);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sasuke/model/user.dart';
 
 abstract class HomeInterface {
   String get displayAndress;
@@ -6,6 +7,6 @@ abstract class HomeInterface {
   Color get color;
   bool get read;
   String title;
-  String user;
+  UserData user;
   String get displayDate;
 }
