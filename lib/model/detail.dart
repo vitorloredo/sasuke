@@ -7,10 +7,14 @@ class DetailData {
   List<InfoData> listInfo = [];
   UserData user;
   AddressData address;
+  int distance;
+
+  String get distanceDisplay => ' a ${distance~/10000}km de você';
 
   DetailData.fromJson(Map map) {
     title = map['title'];
     final embedded = map['_embedded'];
+    distance = map['distance'];
 
     embedded['info'] as List
     ..forEach((it) {
