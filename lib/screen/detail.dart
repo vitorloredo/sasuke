@@ -98,7 +98,6 @@ class _DetailPageState extends State<DetailPage> {
                     child: Center(
                       child: Text(
                         widget.footer,
-                        // widget.color == Colors.blue ? "Aceite o pedido para destravar o contato!" : "Fale com o cliente o quanto antes",
                         style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
