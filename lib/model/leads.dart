@@ -6,6 +6,7 @@ import 'package:sasuke/model/address.dart';
 import 'package:sasuke/model/date.dart';
 import 'package:sasuke/model/link.dart';
 import 'package:sasuke/model/user.dart';
+import 'package:sasuke/screen/detail.dart';
 import 'package:sasuke/widget/home.dart';
 
 class LeadsData implements HomeInterface{
@@ -15,13 +16,8 @@ class LeadsData implements HomeInterface{
   @override
   UserData user;
 
-  Date date;
-  AddressData address;
-
   @override
   Link link;
-
-  String state;
 
   @override
   Color get color => Colors.green;
@@ -33,27 +29,18 @@ class LeadsData implements HomeInterface{
   String get displayDate => date.getDisplay;
 
   @override
-  bool get read => null;
-
-  @override
   Widget get toCard => HomeCard(
     viewData: this
   );
 
-  LeadsData.fromJson(Map map) {
-    date = Date(DateTime.parse(map['created_at']));
-    final embedded = map['_embedded'];
-    address = AddressData.fromJson(embedded['address']);
-    user = UserData.fromMap(embedded['user']);
-    title = embedded['request']['title'];
-    link = Link.fromJson(map['_links']);
-  }
-
   @override
-  Color get colorType => Colors.green;
-
-  @override
-  String get nameType => "Disponivel";
+  DetailPage get onSelect => DetailPage(
+    color: Colors.green,
+    link: link,
+    title: "Disponivel",
+    bottomNavigationBar: navigatorbar,
+    footer: "Fale com o cliente o quanto antes"
+  );
 
   @override
   Widget get navigatorbar => Row(
@@ -99,6 +86,18 @@ class LeadsData implements HomeInterface{
       )
     ],
   );
+
+  Date date;
+  AddressData address;
+
+  LeadsData.fromJson(Map map) {
+    date = Date(DateTime.parse(map['created_at']));
+    final embedded = map['_embedded'];
+    address = AddressData.fromJson(embedded['address']);
+    user = UserData.fromMap(embedded['user']);
+    title = embedded['request']['title'];
+    link = Link.fromJson(map['_links']);
+  }
 
   Row _iconTab({IconData iconData, String text, Color color}) {
     return Row(

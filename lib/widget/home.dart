@@ -34,17 +34,17 @@ class HomeCard extends StatelessWidget {
           Divider(),
           Row(
             children: <Widget>[
-              iconText(
+              _iconText(
                 Icons.person, viewData.user.user
               ),
               Spacer(),
-              iconText(
+              _iconText(
                 Icons.person, viewData.displayDate
               ),
             ],
           ),
           SizedBox(height: 12.0,),
-          iconText(
+          _iconText(
             Icons.pin_drop, viewData.displayAndress
           ),
           SizedBox(height: 12.0,)
@@ -53,7 +53,7 @@ class HomeCard extends StatelessWidget {
     );
   }
 
-  iconText(IconData iconData, String text) {
+  _iconText(IconData iconData, String text) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[

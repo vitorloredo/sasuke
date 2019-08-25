@@ -4,8 +4,9 @@ import 'package:sasuke/screen/detail.dart';
 
 class HomeView extends StatelessWidget {
   final ViewData viewData;
+  final DetailPage Function() onSelect;
 
-  HomeView({@required this.viewData});
+  HomeView({@required this.viewData, this.onSelect});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +17,10 @@ class HomeView extends StatelessWidget {
         final homeInterface = viewData.listHomeInter[index];
         return GestureDetector(
           child: homeInterface.toCard,
-          onTap: () => Navigator.push(
+          onTap: () =>  Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailPage(
-              color: homeInterface.colorType,
-              link: homeInterface.link,
-              title: homeInterface.nameType,
-              bottomNavigationBar: homeInterface.navigatorbar,
-            )),
+            MaterialPageRoute(builder: (context) => homeInterface.onSelect
+            ),
           ),
         );
       },

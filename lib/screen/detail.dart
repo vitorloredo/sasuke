@@ -9,12 +9,14 @@ class DetailPage extends StatefulWidget {
   final Link link;
   final String title;
   final Widget bottomNavigationBar;
+  final String footer;
 
   DetailPage({
     @required this.color,
     @required this.link,
     @required this.title,
-    this.bottomNavigationBar
+    @required this.footer,
+    this.bottomNavigationBar,
   });
 
   @override
@@ -95,7 +97,8 @@ class _DetailPageState extends State<DetailPage> {
                     padding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 20.0),
                     child: Center(
                       child: Text(
-                        widget.color == Colors.blue ? "Aceite o pedido para destravar o contato!" : "Fale com o cliente o quanto antes",
+                        widget.footer,
+                        // widget.color == Colors.blue ? "Aceite o pedido para destravar o contato!" : "Fale com o cliente o quanto antes",
                         style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
