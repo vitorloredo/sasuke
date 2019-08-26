@@ -10,6 +10,8 @@ http: Para fazer as request
 
 google_maps_flutter: Para fazer o maps
 
+url_launcher: Abrir o whatsApp e o celular
+
 ## Desenvolvimento
 
 Foi testado no Iphone 7, necessario colocar a chave de API.
