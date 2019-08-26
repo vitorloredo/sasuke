@@ -13,7 +13,7 @@ class AddressData {
       geolocation = Geolocation.fromJson(map['geolocation']);
   }
 
-  CameraPosition get cameraPosition => geolocation.cameraPosition;
+  CameraPosition get getPosition => geolocation.cameraPosition;
 
   String get getDisplay => "$neighborhood - $city";
 }
