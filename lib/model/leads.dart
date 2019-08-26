@@ -37,7 +37,7 @@ class LeadsData implements HomeInterface{
   DetailPage get onSelect => DetailPage(
     color: Colors.green,
     link: link,
-    title: "Disponivel",
+    title: "Aceitos",
     bottomNavigationBar: navigatorbar,
     footer: "Fale com o cliente o quanto antes"
   );
