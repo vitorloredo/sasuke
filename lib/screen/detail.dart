@@ -208,9 +208,12 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _map(CameraPosition geolocation) {
     return Container(
-      height: 200,
+      height: 120,
       child: GoogleMap(
         mapType: MapType.normal,
+        rotateGesturesEnabled: false,
+        scrollGesturesEnabled: false,
+        tiltGesturesEnabled: false,
         initialCameraPosition: geolocation,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);

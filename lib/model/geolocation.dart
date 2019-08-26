@@ -9,5 +9,8 @@ class Geolocation {
     longitude = map['longitude'];
   }
 
-  CameraPosition get cameraPosition => CameraPosition(target: LatLng(latitude, longitude));
+  CameraPosition get cameraPosition => CameraPosition(
+    target: LatLng(latitude, longitude,),
+    zoom: 18.0
+  );
 }
