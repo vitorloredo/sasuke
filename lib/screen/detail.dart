@@ -207,9 +207,19 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget _map(CameraPosition geolocation) {
+    final circle = Circle(
+      circleId: CircleId("CircleId"),
+      fillColor: Colors.blue[100],
+      strokeColor: Colors.blue,
+      strokeWidth: 2,
+      radius: 28.0,
+      center: geolocation.target
+    );
+
     return Container(
       height: 120,
       child: GoogleMap(
+        circles: Set<Circle>.of([circle]),
         mapType: MapType.normal,
         rotateGesturesEnabled: false,
         scrollGesturesEnabled: false,
