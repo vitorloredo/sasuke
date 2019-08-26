@@ -52,7 +52,7 @@ class OffersData implements HomeInterface {
           color: Colors.white,
           child: _iconTab(
             iconData: Icons.close,
-            text: "RECUSAR",
+            text: "ACEITAR",
             color: Colors.grey
           ),
         ),
