@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sasuke/model/detail.dart';
 import 'package:sasuke/model/link.dart';
 import 'package:sasuke/service/detail.dart';
@@ -24,6 +27,9 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  Completer<GoogleMapController> _controller = Completer();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +42,7 @@ class _DetailPageState extends State<DetailPage> {
       body: FutureBuilder(
         future: DetailService().get(widget.link),
         builder: (BuildContext bc, AsyncSnapshot<DetailData> detailSnap) {
-          if(detailSnap.connectionState == ConnectionState.waiting) return Load();
+          if(detailSnap.connectionState == ConnectionState.waiting && !detailSnap.hasData) return Load();
           if(!detailSnap.hasData) return Center(child: Text("Ops... Algum erro aconteceu"),);
           final detail = detailSnap.data;
           return SingleChildScrollView(
@@ -53,7 +59,7 @@ class _DetailPageState extends State<DetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _map(),
+                  _map(detail.address.getPosition),
                   _title(detail),
                   Divider(
                     indent: 18.0,
@@ -200,10 +206,16 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-  Container _map() {
+  Widget _map(CameraPosition geolocation) {
     return Container(
-      color: Colors.red,
-      child: SizedBox(height: 180, width: double.infinity,),
+      height: 200,
+      child: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: geolocation,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
     );
   }
 
