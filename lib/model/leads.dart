@@ -8,6 +8,8 @@ import 'package:sasuke/model/link.dart';
 import 'package:sasuke/model/user.dart';
 import 'package:sasuke/screen/detail.dart';
 import 'package:sasuke/widget/home.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class LeadsData implements HomeInterface{
   @override
@@ -47,14 +49,20 @@ class LeadsData implements HomeInterface{
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: <Widget>[
       Expanded(
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 14.0),
-          color: Colors.white,
-          child: _iconTab(
-            iconData: Icons.phone,
-            text: "LIGAR",
-            color: Colors.blue
+        child: GestureDetector(
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 14.0),
+            color: Colors.white,
+            child: _iconTab(
+              iconData: Icons.phone,
+              text: "LIGAR",
+              color: Colors.blue
+            ),
           ),
+          onTap: () async {
+            var phone = "tel:+55119999999";
+            await canLaunch(phone) ? launch(phone) : print("ops");
+          },
         ),
       ),
       Column(
@@ -74,14 +82,20 @@ class LeadsData implements HomeInterface{
         ],
       ),
       Expanded(
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 14.0),
-          color: Colors.white,
-          child: _iconTab(
-            iconData: Icons.message,
-            text: "WHATSAPP",
-            color: Colors.blue
+        child: GestureDetector(
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 14.0),
+            color: Colors.white,
+            child: _iconTab(
+              iconData: Icons.message,
+              text: "WHATSAPP",
+              color: Colors.blue
+            ),
           ),
+          onTap: () async {
+            var whatsappUrl ="whatsapp://send?phone=+55119999999";
+            await canLaunch(whatsappUrl) ? launch(whatsappUrl) : print("not have whats");
+          }
         ),
       )
     ],
